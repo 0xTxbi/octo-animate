@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Route } from 'react-router';
 import gsap from 'gsap';
 import './styles/App.scss'
@@ -33,29 +33,63 @@ const routes = [
   }
 ]
 
+
+// Set delay for resize-trigger event
+function debounce(fn, ms) {
+  let timer;
+  return () => {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      timer = null
+      fn.apply(this, arguments)
+    }, ms)
+  }
+}
+
 function App() {
+
+
+  // Disble flashing
+  gsap.to('body', 0, {
+    css: {
+      visibility: "visible"
+    }
+
+  })
+
+
+  const [dimensions, setDimensions] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth
+  })
 
   useEffect(() => {
 
     // Obtain browser's inner height and set css vh variable
-    let vh = window.innerHeight * .01;
+    let vh = dimensions.height  * .01;
     document.documentElement.style.setProperty('--vh', `${vh}px`)
 
-    // Disble flashing
-    gsap.to('body', 0, {
-      css: {
-        visibility: "visible"
-      }
+    // Handle browser's resize display
 
-    })
+    const debouncedViewportResize = debounce(function handleViewportResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth
+      })
+    }, 500)
 
-  }, [])
+    window.addEventListener('resize', debouncedViewportResize)
+
+    return () => {
+      window.removeEventListener('resize', debouncedViewportResize)
+    }
+
+  }, [dimensions.height])
 
   return (
 
     <>
       <Header />
-
       <div className="App">
         {routes.map(({ path, Component }) => (
           <Route key={path} exact path={path}>
