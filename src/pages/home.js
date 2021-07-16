@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import gsap from 'gsap';
 import IntOverlay from '../components/intOverlay';
 import Banner from '../components/banner';
-import CaseStudies from '../components/caseStudies'
+import CaseStudies from '../components/cases'
 
 // Timeline
 const tl = gsap.timeline()
@@ -10,7 +10,7 @@ const tl = gsap.timeline()
 const homeAnimation = (completeAnimation) => {
 
     tl.from('.line span', 2, {
-        y: 100,
+        y: 120,
         ease: 'power4.out',
         delay: 1,
         skewY: 7,
