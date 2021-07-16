@@ -19,17 +19,44 @@
         }
     }
 
-    .nav {
-        width: 25px;
-        @include media('<=phone') {
+    .nav-toggle {
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include media("<=tablet") {
+            margin-right: 25px;
+        }
+        @include media("<=phone") {
+            margin-right: 16px;
             width: 20px;
         }
-        span {
-            margin-bottom: .3rem;
-            background: $black;
-            height: 2px;
-            width: 100%;
-            display: block;
+
+        .hamburger-menu {
+            width: 25px;
+            span {
+                margin-bottom: 0.3rem;
+                background: $black;
+                height: 2px;
+                width: 100%;
+                display: block;
+            }
+        }
+
+        .hamburger-menu-close {
+            position: absolute;
+            display: none;
+
+            svg {
+                @include media("<=tablet") {
+                    width: 56px;
+                }
+                @include media("<=phone") {
+                    width: 48px;
+                }
+
+            }
         }
     }
 }
