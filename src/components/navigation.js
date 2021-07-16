@@ -49,23 +49,23 @@ const Navigation = () => {
                                         Free consultation
                                     </NavLink>
                                 </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div className="nav-column">
-                        <div className="nav-label">Contact</div>
-                        <div className="nav-infos">
+                            </ul >
+                            {/* Address */}
                             <ul className="nav-info">
-                                {/* Address */}
                                 <li className="nav-info-label">Locations</li>
                                 <li>8206 Dunisch Rd Elk Grove</li>
                                 <li>Elk Grove, California</li>
                                 <li>United States</li>
-                                {/* Contact addresses */}
+                            </ul>
+
+                            {/* Contact addresses */}
+                            <ul className="nav-info">
                                 <li className="nav-info-label">Phone</li>
-                                <li>+44 01234 5678</li>
-                                {/* Others */}
+                                <li>+44 (0) 1234 5678</li>
+                            </ul>
+
+                            {/* Others */}
+                            <ul className="nav-info">
                                 <li className="nav-info-label">Other</li>
                                 <li>Privacy Policy</li>
                                 <li>Cookies</li>
