@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react'
 import { Route } from 'react-router';
 import gsap from 'gsap';
-import Header from './components/header';
 import './styles/App.scss'
+
+// Components
+import Navigation from './components/navigation';
+import Header from './components/header';
 
 // Pages
 import Home from './pages/home';
@@ -60,6 +63,8 @@ function App() {
           </Route>
         ))}
       </div>
+
+      <Navigation />
 
     </>
 
